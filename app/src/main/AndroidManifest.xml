@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Droidcafe">
         <activity
+            android:name=".OrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Droidcafe">

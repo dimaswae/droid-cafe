@@ -1,11 +1,12 @@
 package com.example.droidcafe
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.droidcafe.databinding.FragmentFirstBinding
 
 /**
@@ -32,13 +33,32 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        view.findViewById<ImageView>(R.id.donut)
+            .setOnClickListener(View.OnClickListener {
+                displayToast(getResources().getString(R.string.donut_order_message))
+            })
+
+
+        view.findViewById<ImageView>(R.id.ice_cream)
+            .setOnClickListener(View.OnClickListener {
+                displayToast(getString(R.string.ice_cream_order_message))
+            })
+
+
+        view.findViewById<ImageView>(R.id.froyo)
+            .setOnClickListener(View.OnClickListener {
+                displayToast(getString(R.string.froyo_order_message))
+            })
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    fun displayToast(message: String?) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
+
 }
